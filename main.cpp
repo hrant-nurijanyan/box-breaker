@@ -1,7 +1,10 @@
 #include <iostream>
-#include <entt/entt.hpp>
+
+#include "game/BoxBreakerGame.h"
+
 
 int main()
 {
-    return 0;
+    Game game(std::make_unique<BoxBreakerConfig>(), std::make_unique<BoxBreakerInputProcessor>());
+    game.loop();
 }

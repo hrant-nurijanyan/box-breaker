@@ -3,7 +3,7 @@ project(box_breaker)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(box_breaker main.cpp)
+add_executable(box_breaker main.cpp game/BoxBreakerGame.h game/Game.cpp)
 
 set(EXT_DEPS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extDeps)
 
