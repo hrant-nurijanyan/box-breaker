@@ -3,7 +3,7 @@ project(box_breaker)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(box_breaker main.cpp game/BoxBreakerGame.h game/Game.cpp)
+add_executable(box_breaker main.cpp game/Game.cpp glsl/ShaderProgram.cpp glsl/ShaderProgram.h)
 
 set(EXT_DEPS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extDeps)
 
@@ -28,3 +28,11 @@ find_package(OpenGL REQUIRED)
 
 target_link_libraries(box_breaker PRIVATE glfw OpenGL::GL glad)
 target_include_directories(box_breaker PRIVATE ${GLFW_INC_DIR} ${GLAD_INC_DIR} ${ENTT_INC_DIR})
+
+# Custom command to copy data
+add_custom_command(
+        TARGET box_breaker POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/glsl
+        ${CMAKE_CURRENT_BINARY_DIR}/glsl)
+
