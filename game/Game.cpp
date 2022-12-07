@@ -137,11 +137,8 @@ void Game::loadGameConfig(const Game::GameConfigPtr &gameConfig)
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(getRectIndices()), getRectIndices().data(),
                      isDynamic ? GL_DYNAMIC_DRAW : GL_STATIC_DRAW);
 
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), nullptr);
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
         glEnableVertexAttribArray(0);
-
-        glVertexAttribPointer(1, 4, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void *) (3 * sizeof(float)));
-        glEnableVertexAttribArray(1);
 
         glBindBuffer(GL_ARRAY_BUFFER, 0);
         glBindVertexArray(0);
@@ -221,6 +218,14 @@ void Game::loop()
         {
             auto render = registry.get<Render>(entity);
             registry.ctx().get<ShaderProgram>().use();
+
+            auto colorPtr = registry.try_get<Color>(entity);
+            if (colorPtr)
+            {
+                registry.ctx().get<ShaderProgram>().setUniform("color",
+                                                               {colorPtr->r, colorPtr->g, colorPtr->b, colorPtr->a});
+            }
+
             glBindVertexArray(render.VAO);
             glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
         }
@@ -326,16 +331,10 @@ void Game::doCollision()
 
             registry.patch<Speed>(ball, [&](auto &speed)
             {
-                if (otherSpeed == nullptr)
-                {
-                    auto temp = speed.x;
-                    speed.x *= -speed.y;
-                    speed.y *= -temp;
-                } else
-                {
-                    speed.x = speed.x / 2 + otherSpeed->x / 2;
-                    speed.y = speed.y / 2 + otherSpeed->y / 2;
-                }
+
+                speed.x = -speed.x;
+                speed.y = -speed.y;
+
             });
         }
     }

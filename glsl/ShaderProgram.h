@@ -8,6 +8,7 @@
 #include <glad/glad.h>
 #include <fstream>
 #include <sstream>
+#include <array>
 
 struct ShaderProgram
 {
@@ -16,6 +17,8 @@ struct ShaderProgram
     ShaderProgram();
 
     void use() const;
+
+    void setUniform(const char* name, const std::array<float,4>& value);
 
 
 private:

@@ -79,3 +79,8 @@ ShaderProgram::ShaderProgram() : ShaderProgram(defaultVertexPath, defaultFragmen
 {
 
 }
+
+void ShaderProgram::setUniform(const char *name, const std::array<float, 4> &value)
+{
+    glUniform4f(glGetUniformLocation(id, name), value[0], value[1], value[2], value[3]);
+}
