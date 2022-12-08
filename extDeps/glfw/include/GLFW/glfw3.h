@@ -5663,7 +5663,7 @@ GLFWAPI GLFWglproc glfwGetProcAddress(const char* procname);
 
 /*! @brief Returns whether the Vulkan loader and an ICD have been found.
  *
- *  This function returns whether the Vulkan loader and any minimally functional
+ *  This function returns whether the Vulkan loader and any minimally reactive
  *  ICD have been found.
  *
  *  The availability of a Vulkan loader and even an ICD does not by itself guarantee that
@@ -5815,7 +5815,7 @@ GLFWAPI int glfwGetPhysicalDevicePresentationSupport(VkInstance instance, VkPhys
  *
  *  This function creates a Vulkan surface for the specified window.
  *
- *  If the Vulkan loader or at least one minimally functional ICD were not found,
+ *  If the Vulkan loader or at least one minimally reactive ICD were not found,
  *  this function returns `VK_ERROR_INITIALIZATION_FAILED` and generates a @ref
  *  GLFW_API_UNAVAILABLE error.  Call @ref glfwVulkanSupported to check whether
  *  Vulkan is at least minimally available.

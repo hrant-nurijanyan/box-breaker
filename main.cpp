@@ -1,19 +1,33 @@
 #include <iostream>
 
-#include "game/BoxBreakerGame.h"
+#include <entt/entt.hpp>
 
+struct A
+{
+    virtual void f() const = 0;
+
+    virtual ~A() = default;
+};
+
+struct B : A
+{
+    void f() const final
+    {
+        std::cout << "B::f()" << std::endl;
+    }
+
+};
+
+struct C : A
+{
+    void f() const final
+    {
+        std::cout << "C::f()" << std::endl;
+    }
+
+};
 
 int main()
 {
-    try
-    {
-        Game game(std::make_unique<BoxBreakerWindowConfig>());
-        game.setInputProcessor(std::make_unique<BoxBreakerInputProcessor>());
-        game.loadGameConfig(std::make_unique<BoxBreakerGameConfig>());
-        game.loop();
-    } catch (const std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
 
 }

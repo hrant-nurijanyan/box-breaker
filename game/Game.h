@@ -86,24 +86,6 @@ namespace BoxBreaker
     };
 
 
-    struct Game
-    {
-        Game();
-
-        void loadWindowConfig(const std::unique_ptr<IWindowConfig> &windowConfig);
-
-        void loadGameConfig(const std::unique_ptr<IGameConfig> &gameConfig);
-
-        void start();
-
-        void end();
-
-    private:
-        void update(double delta);
-
-    private:
-        entt::registry registry;
-    };
 }
 
 struct Game
