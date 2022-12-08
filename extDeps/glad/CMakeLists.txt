@@ -5,4 +5,4 @@ set(CMAKE_C_STANDARD 99)
 
 add_library(glad glad.c)
 
-target_include_directories(glad PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include/)
+target_include_directories(glad PRIVATE include)

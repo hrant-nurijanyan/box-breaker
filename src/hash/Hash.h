@@ -1,13 +1,16 @@
 #ifndef BOX_BREAKER_HASH_H
 #define BOX_BREAKER_HASH_H
 
-#include <entt/entt.hpp>
+#include "entt/entt.hpp"
 
 using namespace entt::literals;
 
-namespace BoxBreaker::Common::Hash
+namespace BoxBreaker::Hash
 {
     static constexpr auto KEY_DELTA_TIME = "keyDeltaTime"_hs;
+    static constexpr auto KEY_GL_VERSION_MAJOR = "keyGLVersionMajor"_hs;
+    static constexpr auto KEY_GL_VERSION_MINOR = "keyGLVersionMinor"_hs;
+    static constexpr auto KEY_GL_PROFILE = "keyGLProfile"_hs;
     static constexpr auto KEY_WINDOW_WIDTH = "keyWindowWidth"_hs;
     static constexpr auto KEY_WINDOW_HEIGHT = "keyWindowHeight"_hs;
     static constexpr auto KEY_WINDOW_TITLE = "keyWindowTitle"_hs;

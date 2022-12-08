@@ -3,9 +3,9 @@ project(box_breaker)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(box_breaker main.cpp common/math/Math.hpp)
+add_executable(box_breaker src/main.cpp src/math/Math.hpp src/graphics/Graphics.hpp src/reactive/Reactive.cpp src/game/Game.cpp src/game/Game.h src/config/Config.h src/config/Config.cpp src/config/Default.h)
 
-set(EXT_DEPS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/extDeps)
+set(EXT_DEPS_DIR extDeps)
 
 # GLFW
 set(GLFW_DIR ${EXT_DEPS_DIR}/glfw)
@@ -17,7 +17,6 @@ set(GLAD_INC_DIR ${GLAD_DIR}/include)
 
 # ENTT
 set(ENTT_INC_DIR ${EXT_DEPS_DIR}/entt/include)
-
 
 
 # Linking all together
@@ -34,6 +33,6 @@ target_include_directories(box_breaker PRIVATE ${GLFW_INC_DIR} ${GLAD_INC_DIR} $
 add_custom_command(
         TARGET box_breaker POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/glsl
+        ${CMAKE_SOURCE_DIR}/src/glsl
         ${CMAKE_CURRENT_BINARY_DIR}/glsl)
 
