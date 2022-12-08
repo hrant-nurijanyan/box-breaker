@@ -5,25 +5,10 @@
 
 #include "Config.h"
 
+#include "../game/Game.h"
+
 namespace BoxBreaker::Default
 {
-    struct GLConfig : Config::IGLConfig
-    {
-        int getVersionMajor() final
-        {
-            return 3;
-        }
-
-        int getVersionMinor() final
-        {
-            return 3;
-        }
-
-        int getProfile() final
-        {
-            return GLFW_OPENGL_CORE_PROFILE;
-        }
-    };
 
     struct WindowConfig : Config::IWindowConfig
     {

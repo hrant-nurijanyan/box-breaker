@@ -23,6 +23,7 @@ namespace BoxBreaker::Hash
     static constexpr auto KEY_BALL_INITIAL_SPEED = "keyBallInitialSpeed"_hs;
     static constexpr auto KEY_OBSTACLE_RECTS = "keyObstacleRects"_hs;
     static constexpr auto KEY_OBSTACLE_COLORS = "keyObstacleColors"_hs;
+    static constexpr auto KEY_GAME_IS_PAUSED = "keyGameIsPaused"_hs;
 }
 
 #endif //BOX_BREAKER_HASH_H

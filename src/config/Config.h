@@ -2,6 +2,7 @@
 #define BOX_BREAKER_CONFIG_H
 
 #include <entt/entt.hpp>
+#include <GLFW/glfw3.h>
 #include <memory>
 
 #include "../graphics/Graphics.hpp"
@@ -24,21 +25,8 @@ namespace BoxBreaker
             virtual ~IWindowConfig() = default;
         };
 
-        struct IGLConfig
-        {
-            virtual int getVersionMajor() = 0;
-
-            virtual int getVersionMinor() = 0;
-
-            virtual int getProfile() = 0;
-
-            virtual ~IGLConfig() = default;
-        };
-
         static void loadWindowConfig(entt::registry::context &ctx,
                                      const std::unique_ptr<IWindowConfig> &windowConfig);
-
-        static void loadGLConfig(entt::registry::context &ctx, const std::unique_ptr<IGLConfig> &glConfig);
 
     };
 
