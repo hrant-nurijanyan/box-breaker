@@ -4,24 +4,19 @@
 #include "../math/Math.hpp"
 #include "../graphics/Graphics.hpp"
 
-namespace BoxBreaker::Component
-{
-
-    struct Speed
-    {
-        float x, y;
+namespace BoxBreaker::Component {
+    // Struct tag for walls
+    struct Wall {
     };
-
+    using Speed = Math::Vector2f;
     using Rect = Math::Rect;
     using Color = Graphics::Color;
 
-    struct Render
-    {
+    struct Render {
         unsigned int VAO, VBO, EBO;
         bool isDynamic;
 
-        constexpr bool isValid() const
-        {
+        constexpr bool isValid() const {
             return VAO != 0 && VBO != 0 && EBO != 0;
         }
     };

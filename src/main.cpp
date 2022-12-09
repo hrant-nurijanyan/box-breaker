@@ -1,15 +1,19 @@
 #include <iostream>
-
-#include "reactive/Reactive.h"
 #include "config/Default.h"
+#include "game/Game.h"
 
 
 int main()
 {
-
-    BoxBreaker::Config::loadWindowConfig(registry.ctx(),
-                                         std::make_unique<BoxBreaker::Default::WindowConfig>());
-
-    BoxBreaker::Game::init(registry.ctx());
-    BoxBreaker::Game::loop(registry);
+    try
+    {
+        BoxBreaker::Game game;
+        game.loadWindowConfig(std::make_unique<BoxBreaker::Config::Default::WindowConfig>());
+        game.loadGameConfig(std::make_unique<BoxBreaker::Config::Default::GameConfig>());
+        game.run();
+    } catch (const std::exception &e)
+    {
+        std::cerr << e.what() << std::endl;
+    }
+    return 0;
 }

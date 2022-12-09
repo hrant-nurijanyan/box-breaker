@@ -2,33 +2,46 @@
 #define BOX_BREAKER_CONFIG_H
 
 #include <entt/entt.hpp>
-#include <GLFW/glfw3.h>
 #include <memory>
+#include "../math/Math.hpp"
 
 #include "../graphics/Graphics.hpp"
 #include "../hash/Hash.h"
 
-namespace BoxBreaker
+namespace BoxBreaker::Config
 {
-    struct Config
+    struct IWindowConfig
     {
-        struct IWindowConfig
-        {
-            virtual int getWidth() const = 0;
+        virtual int getWidth() const = 0;
 
-            virtual int getHeight() const = 0;
+        virtual int getHeight() const = 0;
 
-            virtual const char *getTitle() const = 0;
+        virtual const char *getTitle() const = 0;
 
-            virtual Graphics::Color getColor() const = 0;
+        virtual Graphics::Color getColor() const = 0;
 
-            virtual ~IWindowConfig() = default;
-        };
-
-        static void loadWindowConfig(entt::registry::context &ctx,
-                                     const std::unique_ptr<IWindowConfig> &windowConfig);
-
+        virtual ~IWindowConfig() = default;
     };
+
+    struct IGameConfig
+    {
+        virtual Math::Rect getPlayerRect() const = 0;
+
+        virtual Graphics::Color getPlayerColor() const = 0;
+
+        virtual Math::Rect getBallRect() const = 0;
+
+        virtual Graphics::Color getBallColor() const = 0;
+
+        virtual Math::Vector2f getBallInitialSpeed() const = 0;
+
+        virtual std::vector<Math::Rect> getObstacleRects() const = 0;
+
+        virtual std::vector<Graphics::Color> getObstacleColors() const = 0;
+
+        virtual ~IGameConfig() = default;
+    };
+
 
 }
 

@@ -3,7 +3,7 @@ project(box_breaker)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(box_breaker src/main.cpp src/math/Math.hpp src/graphics/Graphics.hpp src/reactive/Reactive.cpp src/game/Game.cpp src/game/Game.h src/config/Config.h src/config/Config.cpp src/config/Default.h)
+add_executable(box_breaker src/main.cpp src/math/Math.hpp src/graphics/Graphics.hpp src/game/Game.cpp src/game/Game.h src/config/Config.h src/config/Default.h)
 
 set(EXT_DEPS_DIR extDeps)
 
